@@ -23,17 +23,21 @@ const ExpenseForm = (props) => {
       amount: enteredAmount,
       date: new Date(enteredDate),
     };
-    props.onAddExpense(expenseData)
-    setEnteredAmount('')
-    setEnteredDate('')
-    setEnteredTitle('')
+    props.onAddExpense(expenseData);
+    setEnteredAmount("");
+    setEnteredDate("");
+    setEnteredTitle("");
   };
   return (
     <form onSubmit={formSubmitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
-          <input type="text" onChange={enteredTitleHandler} />
+          <input
+            type="text"
+            value={enteredTitle}
+            onChange={enteredTitleHandler}
+          />
         </div>
         <div className="new-expense__control">
           <label>Amount</label>
@@ -41,6 +45,7 @@ const ExpenseForm = (props) => {
             type="number"
             min="0.05"
             step="0.01"
+            value={enteredAmount}
             onChange={enteredAmountHandler}
           />
         </div>
@@ -50,6 +55,7 @@ const ExpenseForm = (props) => {
             type="date"
             min="2019-01-01"
             max="2022-0101"
+            value={enteredDate}
             onChange={enteredDateHandler}
           />
         </div>
